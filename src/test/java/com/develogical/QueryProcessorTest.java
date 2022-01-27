@@ -65,4 +65,9 @@ public class QueryProcessorTest {
     public void canMinusNumbers() throws Exception {
         assertThat(queryProcessor.process("what is 2 minus 5"), containsString("-3"));
     }
+
+    @Test
+    public void canPower() throws Exception {
+        assertThat(queryProcessor.process("what is 2 to the power of 5"), containsString("32"));
+    }
 }

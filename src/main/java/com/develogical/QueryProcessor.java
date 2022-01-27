@@ -101,6 +101,18 @@ public class QueryProcessor {
             return "No idea";
         }
 
+        if (query.toLowerCase().contains("power")) {
+            Pattern pattern = Pattern.compile("what is (\\d+) to the power of (\\d+)");
+            Matcher matcher = pattern.matcher(query.toLowerCase());
+
+            if (matcher.find()) {
+                int result = (int)Math.pow(Integer.parseInt(matcher.group(1)), Integer.parseInt(matcher.group(2)));
+                return String.valueOf(result);
+            }
+
+            return "No idea";
+        }
+
         if (query.toLowerCase().contains("james bond in the film dr no")) {
             return "Sean Connery";
         }
