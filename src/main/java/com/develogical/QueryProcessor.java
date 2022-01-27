@@ -73,8 +73,20 @@ public class QueryProcessor {
             return "No idea";
         }
 
-        if (query.toLowerCase().contains("theresa may selected as the prime minister")) {
+        if (query.toLowerCase().contains("theresa may elected as the prime minister")) {
             return "2016";
+        }
+
+        if (query.toLowerCase().contains("minus")) {
+            Pattern pattern = Pattern.compile("what is (\\d) minus (\\d)");
+            Matcher matcher = pattern.matcher(query.toLowerCase());
+
+            if (matcher.find()) {
+                int result = Integer.parseInt(matcher.group(1)) - Integer.parseInt(matcher.group(2));
+                return String.valueOf(result);
+            }
+
+            return "No idea";
         }
 
         if (query.toLowerCase().contains("james bond in the film dr no")) {
