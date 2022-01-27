@@ -36,10 +36,10 @@ public class QueryProcessorTest {
         assertThat(queryProcessor.process("35e30090: which of the following numbers is the largest: 100, 500, 120, -5"), is("500"));
     }
 
-    /*@Test
+    @Test
     public void canSquareCube() throws Exception {
-        assertThat(queryProcessor.process("35e30090: which of the following numbers is the both a square and a cube: 1936, 860, 2025, 147"), is("500"));
-    }*/
+        assertThat(queryProcessor.process("35e30090: which of the following numbers is the both a square and a cube: 1936, 860, 2025, 147, 64"), is("64"));
+    }
 
     @Test
     public void canPrime() throws Exception {
