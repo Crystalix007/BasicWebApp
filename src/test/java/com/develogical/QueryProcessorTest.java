@@ -68,6 +68,6 @@ public class QueryProcessorTest {
 
     @Test
     public void canPower() throws Exception {
-        assertThat(queryProcessor.process("what is 2 to the power of 5"), containsString("32"));
+        assertThat(queryProcessor.process("what is 7 to the power of 13"), containsString("96889010407"));
     }
 }

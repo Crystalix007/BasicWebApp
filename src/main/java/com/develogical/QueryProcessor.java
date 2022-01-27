@@ -106,7 +106,7 @@ public class QueryProcessor {
             Matcher matcher = pattern.matcher(query.toLowerCase());
 
             if (matcher.find()) {
-                int result = (int)Math.pow(Integer.parseInt(matcher.group(1)), Integer.parseInt(matcher.group(2)));
+                long result = (long)Math.pow(Integer.parseInt(matcher.group(1)), Integer.parseInt(matcher.group(2)));
                 return String.valueOf(result);
             }
 
