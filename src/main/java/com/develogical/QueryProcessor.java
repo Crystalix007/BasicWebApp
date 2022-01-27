@@ -20,15 +20,32 @@ public class QueryProcessor {
             return "FathomlessDepths";
         }
 
-        if (query.toLowerCase().contains("largest")) {
+        boolean isLargest = query.toLowerCase().contains("largest");
+        boolean isSquareAndCube = query.toLowerCase().contains("square and a cube");
+        boolean isPrime = query.toLowerCase().contains("prime");
+        if (isLargest || isSquareAndCube || isPrime) {
             String[] numbers = query.split(":")[2].split(",");
-            int max = 0;
+            int value = 0;
 
             for (String number : numbers) {
-                max = Math.max(max, Integer.parseInt(number.trim()));
+                int num = Integer.parseInt(number.trim());
+                if (isLargest) {
+                    value = Math.max(value, num);
+                } else if (isSquareAndCube) {
+                    int sqrt = (int)Math.sqrt(num);
+                    int cubeRoot = (int)Math.pow(num, 1/3d);
+
+                    if (Math.abs(Math.pow(sqrt, 2) - num) < 0.01 && Math.abs(Math.pow(cubeRoot, 3) - num) < 0.01) {
+                        value = num;
+                    }
+                } else if (isPrime) {
+                    if (valueIsPrime(num)) {
+                        value = num;
+                    }
+                }
             }
 
-            return String.valueOf(max);
+            return String.valueOf(value);
         }
 
         if (query.toLowerCase().contains("plus")) {
@@ -44,5 +61,13 @@ public class QueryProcessor {
         }
 
         return "";
+    }
+
+    private boolean valueIsPrime(int value) {
+        for (int i = 2; i <= Math.ceil(Math.sqrt(value)); i++) {
+            if ((value % i) == 0) return false;
+        }
+
+        return true;
     }
 }
