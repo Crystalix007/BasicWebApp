@@ -50,7 +50,7 @@ public class QueryProcessor {
         }
 
         if (query.toLowerCase().contains("plus")) {
-            Pattern pattern = Pattern.compile("what is (\\d) plus (\\d)");
+            Pattern pattern = Pattern.compile("what is (\\d+) plus (\\d+)");
             Matcher matcher = pattern.matcher(query.toLowerCase());
 
             if (matcher.find()) {
@@ -62,7 +62,7 @@ public class QueryProcessor {
         }
 
         if (query.toLowerCase().contains("multiplied by")) {
-            Pattern pattern = Pattern.compile("what is (\\d) multiplied by (\\d)");
+            Pattern pattern = Pattern.compile("what is (\\d+) multiplied by (\\d+)");
             Matcher matcher = pattern.matcher(query.toLowerCase());
 
             if (matcher.find()) {

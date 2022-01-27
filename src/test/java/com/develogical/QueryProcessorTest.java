@@ -58,6 +58,6 @@ public class QueryProcessorTest {
 
     @Test
     public void canMultiplyNumbers() throws Exception {
-        assertThat(queryProcessor.process("what is 2 multiplied by 5"), containsString("10"));
+        assertThat(queryProcessor.process("what is 2 multiplied by 10"), containsString("20"));
     }
 }
