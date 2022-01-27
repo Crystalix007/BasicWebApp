@@ -33,8 +33,8 @@ public class QueryProcessor {
                 if (isLargest) {
                     value = Math.max(value, num);
                 } else if (isSquareAndCube) {
-                    int sqrt = (int)Math.sqrt(num);
-                    int cubeRoot = (int)Math.pow(num, 1/3d);
+                    int sqrt = (int)Math.round(Math.pow(num, 0.5));
+                    int cubeRoot = (int)Math.round(Math.pow(num, 0.33333333));
 
                     if (Math.abs(Math.pow(sqrt, 2) - num) < 0.01 && Math.abs(Math.pow(cubeRoot, 3) - num) < 0.01) {
                         value = num;
