@@ -36,6 +36,16 @@ public class QueryProcessorTest {
         assertThat(queryProcessor.process("35e30090: which of the following numbers is the largest: 100, 500, 120, -5"), is("500"));
     }
 
+    /*@Test
+    public void canSquareCube() throws Exception {
+        assertThat(queryProcessor.process("35e30090: which of the following numbers is the both a square and a cube: 1936, 860, 2025, 147"), is("500"));
+    }*/
+
+    @Test
+    public void canPrime() throws Exception {
+        assertThat(queryProcessor.process("35e30090: which of the following numbers is prime: 7, 4, 20"), is("7"));
+    }
+
     @Test
     public void isNotCaseSensitive() throws Exception {
         assertThat(queryProcessor.process("shakespeare"), containsString("playwright"));
