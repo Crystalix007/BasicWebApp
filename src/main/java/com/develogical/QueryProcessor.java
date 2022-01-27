@@ -1,5 +1,7 @@
 package com.develogical;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,27 +27,38 @@ public class QueryProcessor {
         boolean isPrime = query.toLowerCase().contains("primes");
         if (isLargest || isSquareAndCube || isPrime) {
             String[] numbers = query.split(":")[2].split(",");
-            int value = 0;
+
+            List<Integer> values = new ArrayList<Integer>();
+
+            if (isLargest || isSquareAndCube) {
+                values.add(0);
+            }
 
             for (String number : numbers) {
                 int num = Integer.parseInt(number.trim());
                 if (isLargest) {
-                    value = Math.max(value, num);
+                    values.set(0, Math.max(values.get(0), num));
                 } else if (isSquareAndCube) {
                     int sqrt = (int)Math.round(Math.pow(num, 0.5));
                     int cubeRoot = (int)Math.round(Math.pow(num, 0.33333333));
 
                     if (Math.abs(Math.pow(sqrt, 2) - num) < 0.01 && Math.abs(Math.pow(cubeRoot, 3) - num) < 0.01) {
-                        value = num;
+                        values.set(0, num);
                     }
                 } else if (isPrime) {
                     if (valueIsPrime(num)) {
-                        value = num;
+                        values.add(num);
                     }
                 }
             }
 
-            return String.valueOf(value);
+            String result = "";
+
+            for (int value : values) {
+                result += ", " + String.valueOf(value);
+            }
+
+            return result.substring(2);
         }
 
         if (query.toLowerCase().contains("plus")) {
