@@ -55,6 +55,14 @@ public class QueryProcessor {
             return "No idea";
         }
 
+        if (query.toLowerCase().contains("theresa may selected as prime minister")) {
+            return "2016";
+        }
+
+        if (query.toLowerCase().contains("james bond in the film dr no")) {
+            return "Sean Connery";
+        }
+
         return "";
     }
 }
