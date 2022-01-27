@@ -106,8 +106,30 @@ public class QueryProcessor {
             Matcher matcher = pattern.matcher(query.toLowerCase());
 
             if (matcher.find()) {
-                long result = (long)Math.pow(Integer.parseInt(matcher.group(1)), Integer.parseInt(matcher.group(2)));
+                long result = (long) Math.pow(Integer.parseInt(matcher.group(1)), Integer.parseInt(matcher.group(2)));
                 return String.valueOf(result);
+            }
+        }
+
+        if (query.toLowerCase().contains("fibonacci sequence")) {
+            Pattern pattern = Pattern.compile("what is the (\\d+)(rd|th|st) number in the fibonacci sequence");
+            Matcher matcher = pattern.matcher(query.toLowerCase());
+
+            if (matcher.find()) {
+                int result = Integer.parseInt(matcher.group(1));
+                if (result == 1 || result == 2) {
+                    return String.valueOf(1);
+                }
+
+                int a = 1;
+                int fib = 1;
+
+                for (int i = 2; i < result; i++) {
+                    fib += a;
+                    a = fib;
+                }
+
+                return String.valueOf(fib);
             }
 
             return "No idea";

@@ -70,4 +70,10 @@ public class QueryProcessorTest {
     public void canPower() throws Exception {
         assertThat(queryProcessor.process("what is 7 to the power of 13"), containsString("96889010407"));
     }
+    @Test
+    public void findsNthFibonacciNumber() throws Exception {
+        assertThat(queryProcessor.process("what is the 3rd number in the fibonacci sequence"), containsString("2"));
+        assertThat(queryProcessor.process("what is the 1st number in the fibonacci sequence"), containsString("1"));
+        assertThat(queryProcessor.process("what is the 15th number in the fibonacci sequence"), containsString("8192"));
+    }
 }
