@@ -43,7 +43,7 @@ public class QueryProcessorTest {
 
     @Test
     public void canPrime() throws Exception {
-        assertThat(queryProcessor.process("35e30090: which of the following numbers is prime: 7, 4, 20"), is("7"));
+        assertThat(queryProcessor.process("35e30090: which of the following numbers are primes: 7, 4, 20"), is("7"));
     }
 
     @Test

@@ -22,9 +22,8 @@ public class QueryProcessor {
 
         boolean isLargest = query.toLowerCase().contains("largest");
         boolean isSquareAndCube = query.toLowerCase().contains("square and a cube");
-        boolean isPrime = query.toLowerCase().contains("prime");
+        boolean isPrime = query.toLowerCase().contains("primes");
         if (isLargest || isSquareAndCube || isPrime) {
-
             String[] numbers = query.split(":")[2].split(",");
             int value = 0;
 
@@ -78,7 +77,7 @@ public class QueryProcessor {
         }
 
         if (query.toLowerCase().contains("minus")) {
-            Pattern pattern = Pattern.compile("what is (\\d) minus (\\d)");
+            Pattern pattern = Pattern.compile("what is (\\d+) minus (\\d+)");
             Matcher matcher = pattern.matcher(query.toLowerCase());
 
             if (matcher.find()) {
